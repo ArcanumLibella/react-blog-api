@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App h-screen">
       <Header/>
+      
       <div className="container mx-auto max-w-screen-sm">
         <Blog/>
       </div>
