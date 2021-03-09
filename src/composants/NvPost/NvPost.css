@@ -1,22 +1,21 @@
-.NvPost {
-    background: #F3E0BE;
+/* .newPost {
     max-width: 700px;
     min-width: 400px;
     text-align: center;
     margin: 0 auto;
-}
+} */
 
-.NvPost label {
+/* .newPost label {
     display: block;
     margin: 10px auto;
     text-align: center;
     font-weight: bold;
-}
+} */
 
-.NvPost input,
-.NvPost textarea,
-.NvPost select {
+/* .newPost input,
+.newPost textarea,
+.newPost select {
     width: 90%;
     margin: auto;
-}
+} */
 
