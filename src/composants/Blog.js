@@ -8,7 +8,8 @@ import PostModale from './PostModale/PostModale'
 
 class Blog extends Component {
     state = {
-        posts: []
+        posts: [],
+        selectPostId: null
     }
 
     componentDidMount() {
@@ -25,10 +26,22 @@ class Blog extends Component {
             this.setState({posts: postAuthor})
         })
     }
+
+    selectId = id => {
+        console.log(id)
+        this.setState({selectPostId: id})
+    } 
     
     render () {
         const posts = this.state.posts.map(post => {
-            return <Post key={post.id} title={post.title} author={post.author}/>
+            return (
+                <Post 
+                    key={post.id} 
+                    title={post.title} 
+                    author={post.author}
+                    isClicked={() => this.selectId(post.id)}
+                />
+            )
         })
 
         return (
@@ -39,7 +52,10 @@ class Blog extends Component {
 
                 <h2 className="my-4 text-xl font-bold">Choisissez un post ...</h2>
 
-                <PostModale />
+                <PostModale 
+                    id={this.state.selectPostId} 
+                    // title={this.post.title}
+                />
 
                 <section className="posts flex flex-col items-center mx-auto">
                     {posts}
