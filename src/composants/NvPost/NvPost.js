@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class NvPost extends Component {
 
@@ -6,6 +7,27 @@ class NvPost extends Component {
         title: '',
         content: '',
         author: 'Bruce Wayne'
+    }
+
+    postArticle = () => {
+        const newPost = {
+            title: this.state.title,
+            content: this.state.content,
+            author: this.state.author
+        }
+
+        axios
+            .post('https://jsonplaceholder.typicode.com/posts', newPost)
+            .then(response => {
+            console.log(response)
+        })
+
+        // Pour vider les inputs après envoi
+        this.setState({
+            title: '',
+            content: '',
+            author: 'Bruce Wayne' 
+        })
     }
 
     render () {
@@ -26,13 +48,17 @@ class NvPost extends Component {
                 <fieldset className="flex flex-col mb-4">
                     <label className="mb-2 font-medium">Auteur</label>
                     <select className="p-2 rounded" value= {this.state.author} onChange={(event) => this.setState({author: event.target.value})}>
-                        <option value="Bruce">Bruce</option>
-                        <option value="Ellen">Ellen</option>
-                        <option value="Clark">Clark</option>
+                        <option value="Bruce">Bruce Wayne</option>
+                        <option value="Ellen">Ellen Ripley</option>
+                        <option value="Clark">Clark Kent</option>
                     </select>
                 </fieldset>
 
-                <button className="p-4 rounded w-full font-bold uppercase text-white bg-pink-500 hover:bg-pink-600 cursor-pointer transition-all">Ajouter un article</button>
+                <button 
+                    className="p-4 rounded w-full font-bold uppercase text-white bg-pink-500 hover:bg-pink-600 cursor-pointer transition-all"
+                    onClick={this.postArticle}>
+                        Ajouter un article
+                </button>
             </div>
         );
     }
