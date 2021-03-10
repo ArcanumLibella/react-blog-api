@@ -27,14 +27,15 @@ class PostModale extends Component {
 
     render () {
         return (
-            this.state.loadedPost ?
+            this.state.loadedPost && this.props.toggle ?
                 <div className="fullPost relative mx-auto p-8 w-4/5 lg:w-full bg-white shadow-lg rounded text-center max-w-screen-sm">
                     <h1 className="post__title mb-4 text-xl font-black uppercase">{this.state.loadedPost.title}</h1>
                     <p>{this.state.loadedPost.body}</p>
             
                     <FontAwesomeIcon 
                         icon={faTimes} 
-                        className="absolute top-4 right-4 cursor-pointer"
+                        className="absolute top-4 right-4 cursor-pointer text-pink-600 hover:text-pink-800 transition-all"
+                        onClick={this.props.hide}
                         // onClick={() => this.removeContact(this.props.id, value.dispatch)}
                     />
                 

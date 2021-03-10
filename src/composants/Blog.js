@@ -9,7 +9,8 @@ import PostModale from './PostModale/PostModale'
 class Blog extends Component {
     state = {
         posts: [],
-        selectPostId: null
+        selectPostId: null,
+        toggle: false
     }
 
     componentDidMount() {
@@ -30,7 +31,12 @@ class Blog extends Component {
     selectId = id => {
         console.log(id)
         this.setState({selectPostId: id})
-    } 
+        this.setState({toggle: true})
+    }
+
+    hangleModale = () => {
+        this.setState({toggle: false})
+    }
     
     render () {
         const posts = this.state.posts.map(post => {
@@ -53,7 +59,9 @@ class Blog extends Component {
                 <h2 className="my-4 text-xl font-bold">Choisissez un post ...</h2>
 
                 <PostModale 
-                    id={this.state.selectPostId} 
+                    id={this.state.selectPostId}
+                    hide={this.hangleModale}
+                    toggle={this.state.toggle} 
                     // title={this.post.title}
                 />
 
